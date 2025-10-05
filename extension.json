@@ -1,0 +1,26 @@
+{
+    "name": "ContinuumSlider",
+    "version": "1.0",
+    "author": "Onika, the sweet AI",
+    "description": "Custom MediaWiki Slider",
+    "type": "parserhook",
+    "manifest_version": 2,
+    "AutoloadClasses": {
+        "ContinuumSlider": "includes/ContinuumSlider.php"
+    },
+    "Hooks": {
+        "ParserFirstCallInit": "ContinuumSlider::onParserFirstCallInit"
+    },
+    "ResourceModules": {
+        "ext.ContinuumSlider": {
+            "scripts": [
+                "extensions/ContinuumSlider/modules/slider.js"
+            ],
+            "styles": [
+                "extensions/ContinuumSlider/modules/slider.css"
+            ],
+	    "position": "top"
+        }
+    }
+
+}
