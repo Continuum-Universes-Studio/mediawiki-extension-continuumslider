@@ -88,6 +88,6 @@ function initFlipbookSlider($content) {
         });
     });
 }
-console.log("%cMade with 💜 by Onika & Snoop Booped by Athena the Basset Queen", "color: hotpink; font-weight: bold; font-size: 14px;");
+console.log("%cMade with 💜 by Onika & Snoop Booped by Athena aka Thea Thea the Basset Queen", "color: hotpink; font-weight: bold; font-size: 14px;");
 // Initial load
 mw.hook('wikipage.content').add(initFlipbookSlider);

@@ -1,12 +1,13 @@
 .mediawiki-flipbook-slider {
     position: relative;
-    width: fit-content; /* Shrinks to fit the image width */
+    width: auto; /* Shrinks to fit the image width */
     max-width: 100%; /* Prevents overflowing on smaller screens */
     margin: 0 auto; /* Centers the whole slider horizontally */
     overflow: hidden;
-    background: #f8f9fa;
+    background: var(--bg-alt);
     border: 1px solid #ccc;
     text-align: center;
+    height: 402px; /* Fixed height to accommodate images and captions */
 }
 
 .flipbook-slide {
@@ -15,7 +16,7 @@
     inset: 0;
     width: 100%;
     opacity: 0;
-    transform: translateX(24px);
+    transform: translateX(48px);
     transition: opacity 300ms ease, transform 300ms ease;
     pointer-events: none;
 }
