@@ -12,21 +12,54 @@ function initFlipbookSlider($content) {
 
         let currentSlide = 0;
         let autoAdvanceTimer = null;
+        let exitTimer = null;
+
+        function setSliderHeight(slide) {
+            if (!slide) {
+                return;
+            }
+            slider.style.height = `${slide.offsetHeight}px`;
+        }
 
         function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
+            if (index === currentSlide) {
+                setSliderHeight(slides[index]);
+                return;
+            }
+
+            const previousSlide = slides[currentSlide];
+            const nextSlide = slides[index];
+
+            if (previousSlide) {
+                previousSlide.classList.remove('active');
+                previousSlide.classList.add('is-exiting');
+            }
+
+            if (exitTimer) {
+                clearTimeout(exitTimer);
+            }
+
+            exitTimer = setTimeout(() => {
+                slides.forEach((slide) => {
+                    slide.classList.remove('is-exiting');
+                });
+            }, 350);
+
+            nextSlide.classList.add('active');
+            nextSlide.classList.remove('is-exiting');
+            currentSlide = index;
+
+            setSliderHeight(nextSlide);
         }
 
         function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
+            const nextIndex = (currentSlide + 1) % slides.length;
+            showSlide(nextIndex);
         }
 
         function prevSlide() {
-            currentSlide = (currentSlide === 0) ? slides.length - 1 : currentSlide - 1;
-            showSlide(currentSlide);
+            const prevIndex = (currentSlide === 0) ? slides.length - 1 : currentSlide - 1;
+            showSlide(prevIndex);
         }
 
         function resetAutoAdvance() {
@@ -44,8 +77,15 @@ function initFlipbookSlider($content) {
             resetAutoAdvance();
         });
 
-        showSlide(currentSlide);
+        slides.forEach((slide, index) => {
+            slide.classList.toggle('active', index === currentSlide);
+        });
+        setSliderHeight(slides[currentSlide]);
         resetAutoAdvance();
+
+        window.addEventListener('resize', () => {
+            setSliderHeight(slides[currentSlide]);
+        });
     });
 }
 console.log("%cMade with 💜 by Onika & Snoop Booped by Athena the Basset Queen", "color: hotpink; font-weight: bold; font-size: 14px;");
