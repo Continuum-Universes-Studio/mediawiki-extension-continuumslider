@@ -41,9 +41,9 @@ class ContinuumSlider {
         $html .= '<button class="flipbook-next" aria-label="Next slide">❯</button>';
 
         $html .= '</div>'; // close .mediawiki-flipbook-slider
-	$html .= '<div class="slider-credit" style="text-align:center; font-size:0.8em; color:#888; margin-top:5px;">';
-	$html .= 'Made with 💜 by Onika & Snoop Booped by Athena';
-	$html .= '</div>';
+        $html .= '<div class="slider-credit" style="text-align:center; font-size:0.8em; color:#888; margin-top:5px;">';
+        $html .= 'Made with 💜 by Onika & Snoop Booped by Athena aka Thea Thea';
+        $html .= '</div>';
 
         return $html;
     }
